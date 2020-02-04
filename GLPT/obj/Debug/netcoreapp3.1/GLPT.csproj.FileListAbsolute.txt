@@ -1,0 +1,13 @@
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\GLPT.exe
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\GLPT.deps.json
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\GLPT.runtimeconfig.json
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\GLPT.runtimeconfig.dev.json
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\GLPT.dll
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\GLPT.pdb
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\osuTK.dll
+D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.csprojAssemblyReference.cache
+D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.AssemblyInfoInputs.cache
+D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.AssemblyInfo.cs
+D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.csproj.CopyComplete
+D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.dll
+D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.pdb

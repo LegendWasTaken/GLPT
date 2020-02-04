@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "GLPT/1.0.0": {
+        "dependencies": {
+          "ppy.osuTK.NS20": "1.0.140"
+        },
+        "runtime": {
+          "GLPT.dll": {}
+        }
+      },
+      "ppy.osuTK.NS20/1.0.140": {
+        "runtime": {
+          "lib/netstandard2.0/osuTK.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GLPT/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ppy.osuTK.NS20/1.0.140": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QvZqRtffZN4E+Lxq33qhJWD0bIY4qX/V47oG9jZ3leUMBpVtva2Fkiy0du5TwNAXotL0drFuB61wWgycehRYxg==",
+      "path": "ppy.osutk.ns20/1.0.140",
+      "hashPath": "ppy.osutk.ns20.1.0.140.nupkg.sha512"
+    }
+  }
+}

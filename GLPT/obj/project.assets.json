@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ppy.osuTK.NS20/1.0.140": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/osuTK.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/osuTK.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ppy.osuTK.NS20/1.0.140": {
+      "sha512": "QvZqRtffZN4E+Lxq33qhJWD0bIY4qX/V47oG9jZ3leUMBpVtva2Fkiy0du5TwNAXotL0drFuB61wWgycehRYxg==",
+      "type": "package",
+      "path": "ppy.osutk.ns20/1.0.140",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/osuTK.dll",
+        "ppy.osutk.ns20.1.0.140.nupkg.sha512",
+        "ppy.osutk.ns20.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "ppy.osuTK.NS20 >= 1.0.140"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\caiod\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Development\\C#\\GLPT\\GLPT\\GLPT.csproj",
+      "projectName": "GLPT",
+      "projectPath": "D:\\Development\\C#\\GLPT\\GLPT\\GLPT.csproj",
+      "packagesPath": "C:\\Users\\caiod\\.nuget\\packages\\",
+      "outputPath": "D:\\Development\\C#\\GLPT\\GLPT\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\caiod\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "dependencies": {
+          "ppy.osuTK.NS20": {
+            "target": "Package",
+            "version": "[1.0.140, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Users\\caiod\\.dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
