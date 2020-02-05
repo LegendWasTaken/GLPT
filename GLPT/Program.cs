@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Engine engine = new Engine(1280, 720);
+            var scene = new Scene();
+            var engine = new Engine(1280, 720, scene);
             engine.Initialize();
         }
     }

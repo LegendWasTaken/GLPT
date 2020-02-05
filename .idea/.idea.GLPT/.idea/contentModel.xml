@@ -18,6 +18,12 @@
         <e p="Engine" t="Include">
           <e p="DebugMessageHandler.cs" t="Include" />
           <e p="Engine.cs" t="Include" />
+          <e p="Scene" t="Include">
+            <e p="Scene.cs" t="Include" />
+            <e p="Shapes" t="Include">
+              <e p="Shape.cs" t="Include" />
+            </e>
+          </e>
           <e p="Shader" t="Include">
             <e p="Shader.cs" t="Include" />
           </e>

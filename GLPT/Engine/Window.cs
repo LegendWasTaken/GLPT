@@ -34,6 +34,7 @@ namespace GLPT
             // Initialize shaders
             _shader.Create();
             
+            _shader.setUniform("res", new Vector2(Width, Height));
             _shader.setUniform("color", new Vector3(0, 255, 255));
             _shader.setUniform("camera_location", new Vector3(0, 0, 0));
             
