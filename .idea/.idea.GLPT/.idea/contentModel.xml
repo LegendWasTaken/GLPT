@@ -18,12 +18,14 @@
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Engine" t="Include">
+          <e p="Camera.cs" t="Include" />
           <e p="DebugMessageHandler.cs" t="Include" />
           <e p="Engine.cs" t="Include" />
           <e p="Placeholder.cs" t="Include" />
           <e p="Scene" t="Include">
             <e p="Scene.cs" t="Include" />
             <e p="Shapes" t="Include">
+              <e p="Plane.cs" t="Include" />
               <e p="Shape.cs" t="Include" />
               <e p="Sphere.cs" t="Include" />
             </e>

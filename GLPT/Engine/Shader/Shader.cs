@@ -24,6 +24,15 @@ namespace GLPT
             }
         }
 
+        public void SetUniform(string name, List<Plane> planes)
+        {
+            for (var i = 0; i < planes.Count; i++)
+            {
+                SetUniform($"{name}[{i}].origin", planes[i].Origin); 
+                SetUniform($"{name}[{i}].normal", planes[i].Normal);
+            }
+        }
+        
         public void SetUniform(string name, List<Sphere> spheres)
         {
             for (var i = 0; i < spheres.Count; i++)
@@ -31,7 +40,6 @@ namespace GLPT
                 SetUniform($"{name}[{i}].origin", spheres[i].Origin); 
                 SetUniform($"{name}[{i}].radius", spheres[i].Radius);
             }
-            
         }
         
         public void SetUniform(string name, Matrix4 matrix)

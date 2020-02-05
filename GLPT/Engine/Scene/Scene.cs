@@ -24,6 +24,19 @@ namespace GLPT
             }
             return spheres;
         }
+
+        public List<Plane> GetPlanes()
+        {
+            var planes = new List<Plane>();
+            foreach (var shape in _shapes)
+            {
+                if (shape is Plane)
+                {
+                    planes.Add((Plane) shape);
+                }
+            }
+            return planes;
+        }
         
     }
 }

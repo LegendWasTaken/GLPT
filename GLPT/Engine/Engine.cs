@@ -12,6 +12,7 @@ namespace GLPT
         private Scene _scene;
         private Shader _shader;
         private Vector3 _cameraLocation;
+        private Camera _camera;
         
         public Engine(int width, int height, Scene scene)
         {
@@ -21,6 +22,7 @@ namespace GLPT
             _scene = scene;
             _shader = new Shader();
             _cameraLocation = new Vector3(0, 0, 0);
+            _camera = new Camera();
         }
         
         public void Initialize()
@@ -45,33 +47,20 @@ namespace GLPT
             );
 
             var spheres = _scene.GetSpheres();
+            var planes = _scene.GetPlanes();
             
             var placeholders = new List<Placeholder>();
-            placeholders.Add(new Placeholder("%SCENE_SPHERE_COUNT%", spheres.Count.ToString()));
+            placeholders.Add(new Placeholder("%SCENE_SPHERE_COUNT%", spheres.Count > 0 ? spheres.Count.ToString() : "1"));
+            placeholders.Add(new Placeholder("%SCENE_CHECK_SPHERE%", (spheres.Count != 0).ToString().ToLower()));
+            placeholders.Add(new Placeholder("%SCENE_PLANE_COUNT%", planes.Count > 0 ? planes.Count.ToString() : "1"));
+            placeholders.Add(new Placeholder("%SCENE_CHECK_PLANE%", (planes.Count != 0).ToString().ToLower()));
             
             // Initialize shaders
             _shader.Create(placeholders);
-            
-            
+
             /*================================*/// Scene setup
             _shader.SetUniform("spheres", spheres);
-            /*================================*/
-            
-            /*================================*/// Camera Setup
-            var theta = (float) (50 * Math.PI / 180);
-            var halfHeight = (float) Math.Tan(theta / 2);
-            var halfWidth = halfHeight * Width / Height;
-            var w = Vector3.Normalize(_cameraLocation - new Vector3(0, 0, 1));
-            var u = Vector3.Normalize(Vector3.Cross(new Vector3(0, 1, 0), w));
-            var v = Vector3.Cross(w, u);
-            var lookat = _cameraLocation - w;
-            
-            _shader.SetUniform("horizontal", 2 * halfWidth * u);
-            _shader.SetUniform("vertical", 2 * halfHeight * v);
-            _shader.SetUniform("lookat", lookat);
-            _shader.SetUniform("camera_location", _cameraLocation);
-            
-            _shader.SetUniform("viewMatrix", Matrix4.Identity);
+            _shader.SetUniform("planes", planes);
             /*================================*/
             
             
@@ -83,12 +72,14 @@ namespace GLPT
         
         protected override void OnRenderFrame(FrameEventArgs e)
         {
+            _camera.Update((float)e.Time);
+            
+            _shader.SetUniform("viewMatrix", _camera.GetViewMatrix());
+            
             GL.ClearColor(Color.Black);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             /*=====================*/
             _shader.useShader();
-
-            
 
             _time += (float) e.Time;
             GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
