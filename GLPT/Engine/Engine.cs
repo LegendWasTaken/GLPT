@@ -5,8 +5,6 @@ namespace GLPT
     public class Engine
     {
         private Window _window;
-        private Shader _shader;
-        
         public Engine(int width, int height)
         {
             _window = new Window("C# Path Tracer", width, height);
@@ -16,8 +14,6 @@ namespace GLPT
         {
             // do start stuff lol
             _window.Run();
-            _shader = new Shader();
-            
         }
         
     }

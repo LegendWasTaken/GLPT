@@ -11,3 +11,7 @@ D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.AssemblyInfo.cs
 D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.csproj.CopyComplete
 D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.dll
 D:\Development\C#\GLPT\GLPT\obj\Debug\netcoreapp3.1\GLPT.pdb
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\frag.glsl
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\vert.glsl
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\camera.glsl
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\structs.glsl

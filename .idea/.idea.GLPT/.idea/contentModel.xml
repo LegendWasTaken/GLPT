@@ -8,7 +8,9 @@
         <e p="Assets" t="Include">
           <e p="Models" t="Include" />
           <e p="Shaders" t="Include">
+            <e p="camera.glsl" t="Include" />
             <e p="frag.glsl" t="Include" />
+            <e p="structs.glsl" t="Include" />
             <e p="vert.glsl" t="Include" />
           </e>
         </e>

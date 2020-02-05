@@ -8,11 +8,13 @@ namespace GLPT
 {
     public class Window : GameWindow
     {
+        private Shader _shader;
         public Window(string title, int width, int height)
         {
             Title = title;
             Width = width;
             Height = height;
+            _shader = new Shader();
         }
         
         protected override void OnLoad(EventArgs e)
@@ -20,27 +22,43 @@ namespace GLPT
             // Start up
             DebugMessageHandler.Initialize(); // Starting the debug message handler 
 
+            // Setup viewport stuff
+            GL.Viewport(0, 0, Width, Height);
+            
+            // Create the full screen triangle
             new VBO(
-                new Vector3(-20f, -1f, 0f),
-                new Vector3(2f, -20f, 0f),
-                new Vector3(2f, 2f, 0)
+                new Vector3(-5f, -1f, 0f),
+                new Vector3(1f, -1f, 0f),
+                new Vector3(1f, 5f, 0)
                 );
+            
+            // Initialize shaders
+            _shader.Create();
+            
+            _shader.setUniform("color", new Vector3(0, 255, 255));
+            _shader.setUniform("camera_location", new Vector3(0, 0, 0));
+            // _shader.setUniform("res", new Vector2(Width, Height));
+
             base.OnLoad(e); // dont fucking touch this
         }
-
+        
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             // Game loop
             GL.ClearColor(Color.Black);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            // do stuff here
-            
-            
-            // dont do stuff here
+            /*=====================*/
+            _shader.useShader();
+            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+            /*=====================*/
             SwapBuffers();
             base.OnRenderFrame(e);
         }
-        
 
+        public override void Exit()
+        {
+            _shader.Release();
+            base.Exit();
+        }
     }
 }
