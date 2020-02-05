@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
 using osuTK;
 using osuTK.Graphics.OpenGL4;
@@ -19,28 +17,28 @@ namespace GLPT
         public void setUniform(string name, Matrix4 matrix)
         {
             GL.UseProgram(_progHandle);
-            int location = _uniforms[name];
+            int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.UniformMatrix4(location, true, ref matrix);
         }
         
         public void setUniform(string name, Vector4 vec)
         {
             GL.UseProgram(_progHandle);
-            int location = _uniforms[name];
+            int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform4(location, vec);
         }
 
         public void setUniform(string name, Vector3 vec)
         {
             GL.UseProgram(_progHandle);
-            int location = _uniforms[name];
+            int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform3(location, vec);
         }
         
         public void setUniform(string name, Vector2 vec)
         {
             GL.UseProgram(_progHandle);
-            int location = _uniforms[name];
+            int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform2(location, vec);
         }
         
@@ -48,7 +46,7 @@ namespace GLPT
         public void setUniform(string name, int num)
         {
             GL.UseProgram(_progHandle);
-            int location = _uniforms[name];
+            int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform1(location, num);
         }
         

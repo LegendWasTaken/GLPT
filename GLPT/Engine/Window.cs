@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using osuTK;
 using osuTK.Graphics.OpenGL4;
 
@@ -37,6 +36,8 @@ namespace GLPT
             
             _shader.setUniform("color", new Vector3(0, 255, 255));
             _shader.setUniform("camera_location", new Vector3(0, 0, 0));
+            
+            _shader.setUniform("viewMatrix", Matrix4.Identity);
             // _shader.setUniform("res", new Vector2(Width, Height));
 
             base.OnLoad(e); // dont fucking touch this

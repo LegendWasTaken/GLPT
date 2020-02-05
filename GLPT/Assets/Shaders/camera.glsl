@@ -1,3 +1,5 @@
 ﻿Ray getRay(float x, float y){
-    return Ray(camera_location, normalize(vec3(x, y, 1f)));
+    vec3 pos = vec3(vec4(camera_location, 1) * viewMatrix);
+    vec3 dir = vec3(vec4(x, y, 1, 0) * viewMatrix);
+    return Ray(pos, normalize(dir));
 }
