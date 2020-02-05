@@ -14,36 +14,62 @@ namespace GLPT
         private int _fragHandle;
         private int _progHandle;
 
-        public void setUniform(string name, Matrix4 matrix)
+        public void SetUniform(string name, params Vector4[] vecs)
+        {
+            GL.UseProgram(_progHandle);
+            var location = _uniforms.GetValueOrDefault(name, -1);
+            if (location != -1)
+            { 
+                GL.Uniform4(location, vecs.Length, ref vecs[0].X);
+            }
+        }
+
+        public void SetUniform(string name, List<Sphere> spheres)
+        {
+            for (var i = 0; i < spheres.Count; i++)
+            {
+                SetUniform($"{name}[{i}].origin", spheres[i].Origin); 
+                SetUniform($"{name}[{i}].radius", spheres[i].Radius);
+            }
+            
+        }
+        
+        public void SetUniform(string name, Matrix4 matrix)
         {
             GL.UseProgram(_progHandle);
             int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.UniformMatrix4(location, true, ref matrix);
         }
         
-        public void setUniform(string name, Vector4 vec)
+        public void SetUniform(string name, Vector4 vec)
         {
             GL.UseProgram(_progHandle);
             int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform4(location, vec);
         }
 
-        public void setUniform(string name, Vector3 vec)
+        public void SetUniform(string name, Vector3 vec)
         {
             GL.UseProgram(_progHandle);
             int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform3(location, vec);
         }
         
-        public void setUniform(string name, Vector2 vec)
+        public void SetUniform(string name, Vector2 vec)
         {
             GL.UseProgram(_progHandle);
             int location = _uniforms.GetValueOrDefault(name, -1);
             if(location != -1) GL.Uniform2(location, vec);
         }
+
+        public void SetUniform(string name, float num)
+        {
+            GL.UseProgram(_progHandle);
+            int location = _uniforms.GetValueOrDefault(name, -1);
+            if(location != -1) GL.Uniform1(location, num);
+        }
         
-        
-        public void setUniform(string name, int num)
+        public void SetUniform(string name, int num)
         {
             GL.UseProgram(_progHandle);
             int location = _uniforms.GetValueOrDefault(name, -1);
@@ -55,18 +81,18 @@ namespace GLPT
             GL.UseProgram(_progHandle);
         }
         
-        public void Create()
+        public void Create(List<Placeholder> placeholders)
         {
             // Create the vertex shader
             _vertHandle = GL.CreateShader(ShaderType.VertexShader);
-            GL.ShaderSource(_vertHandle, ReadShader("vert.glsl"));
+            GL.ShaderSource(_vertHandle, ReadShader("vert.glsl", placeholders));
             GL.CompileShader(_vertHandle);
-            GL.GetShader(_vertHandle, ShaderParameter.CompileStatus, out int status);
+            GL.GetShader(_vertHandle, ShaderParameter.CompileStatus, out var status);
             if (status != 1) throw new Exception(GL.GetShaderInfoLog(_vertHandle));
             
             // Create the fragment shader
             _fragHandle = GL.CreateShader(ShaderType.FragmentShader);
-            GL.ShaderSource(_fragHandle, ReadShader("frag.glsl"));
+            GL.ShaderSource(_fragHandle, ReadShader("frag.glsl", placeholders));
             GL.CompileShader(_fragHandle);
             GL.GetShader(_fragHandle, ShaderParameter.CompileStatus, out status);
             if(status != 1) throw new Exception(GL.GetShaderInfoLog(_fragHandle));
@@ -97,6 +123,7 @@ namespace GLPT
             {
                 GL.GetActiveUniform(_progHandle, i, 256, out _, out int size, out ActiveUniformType type, out string name);
                 int location = GL.GetUniformLocation(_progHandle, name);
+                Console.WriteLine($"UNIFORM: {name}, LOCATION: {location}");
                 _uniforms.Add(name, location);
             }
         }
@@ -110,12 +137,12 @@ namespace GLPT
             GL.DeleteProgram(_progHandle);
         }
 
-        private string ReadShader(string fileName)
+        private string ReadShader(string fileName, List<Placeholder> placeholders)
         {
-            return ReadShader(fileName, new List<string>());
+            return ReadShader(fileName, placeholders, new List<string>());
         }
         
-        private string ReadShader(string fileName, List<string> includePaths)
+        private string ReadShader(string fileName, List<Placeholder> placeholders, List<string> includePaths)
         {
             var path = Path.Combine("Assets", "Shaders", fileName);
             if (includePaths.Contains(path))
@@ -126,9 +153,15 @@ namespace GLPT
             var file = File.ReadAllText(path);
             var pattern = new Regex("#include\\s*\"(.+)\"");
             var match = pattern.Matches(file);
-            for (int i = 0; i < match.Count; i++) 
+            for (var i = 0; i < match.Count; i++) 
             {
-                file = file.Replace(match[i].Groups[0].Value, ReadShader(match[i].Groups[1].Value, includePaths));
+                file = file.Replace(match[i].Groups[0].Value, ReadShader(match[i].Groups[1].Value, placeholders, includePaths));
+            }
+
+            for (var i = 0; i < placeholders.Count; i++)
+            {
+                var current = placeholders[i];
+                file = file.Replace(current.Key, current.Value);
             }
             includePaths.Remove(path);
             return file;

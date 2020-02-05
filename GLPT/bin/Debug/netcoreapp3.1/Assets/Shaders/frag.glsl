@@ -1,38 +1,28 @@
 #version 330
 
-uniform vec2 res;
-uniform vec3 camera_location;
-uniform vec3 color;
-uniform mat4 viewMatrix;
+#include "header.glsl"
 
-in vec2 coord;
-out vec4 colorOut;
-
-#include "structs.glsl"
-#include "camera.glsl"
-
-float intersectRaySphere(Sphere sphere, Ray ray){
-    vec3 oc = ray.origin - sphere.origin;
-    float a = dot(ray.direction, ray.direction);
-    float b = 2.0 * dot(oc, ray.direction);
-    float c = dot(oc, oc) - sphere.radius * sphere.radius;
-    float disc = b * b - 4 * a * c;
-    if(disc < 0) return -1f;
-    return (-b - sqrt(disc)) / 4 * a * c;
-}
+#define SPHERE_COUNT %SCENE_SPHERE_COUNT%
+uniform Sphere spheres[SPHERE_COUNT];
 
 vec3 getSphereNormal(Sphere sphere, vec3 point){
     return normalize(point - sphere.origin) + vec3(1);
 }
 
+vec3 trace(Ray ray){
+    float closestSphereHit = -1F;
+    int closestSphereIndex = -1;
+    for(int i=0; i<spheres.length; i++){ 
+        float t = intersectRaySphere(ray, spheres[i]);
+        if(t != -1F && (t < closestSphereHit || closestSphereHit == -1F)) { // There is a ray sphere intersection
+            closestSphereHit = t;
+            closestSphereIndex = i;
+        }
+    }
+    return closestSphereIndex == -1F ? color : getSphereNormal(spheres[closestSphereIndex], ray.origin + ray.direction * closestSphereHit);
+}
 
 void main() {
     Ray ray = getRay(coord.x, coord.y);
-    Sphere sphere = Sphere(vec3(0, 0, 5), 2f);
-    float dist = intersectRaySphere(sphere, ray);
-    if(dist != -1F) {
-        colorOut = vec4(getSphereNormal(sphere, ray.origin + ray.direction * dist), 1);
-    } else {
-        colorOut = vec4(color, 1);
-    }
+    colorOut = vec4(trace(ray), 1);
 }

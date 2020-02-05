@@ -15,3 +15,5 @@ D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\frag.glsl
 D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\vert.glsl
 D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\camera.glsl
 D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\structs.glsl
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\intersections.glsl
+D:\Development\C#\GLPT\GLPT\bin\Debug\netcoreapp3.1\Assets\Shaders\header.glsl

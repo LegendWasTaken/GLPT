@@ -10,6 +10,8 @@
           <e p="Shaders" t="Include">
             <e p="camera.glsl" t="Include" />
             <e p="frag.glsl" t="Include" />
+            <e p="header.glsl" t="Include" />
+            <e p="intersections.glsl" t="Include" />
             <e p="structs.glsl" t="Include" />
             <e p="vert.glsl" t="Include" />
           </e>
@@ -18,17 +20,18 @@
         <e p="Engine" t="Include">
           <e p="DebugMessageHandler.cs" t="Include" />
           <e p="Engine.cs" t="Include" />
+          <e p="Placeholder.cs" t="Include" />
           <e p="Scene" t="Include">
             <e p="Scene.cs" t="Include" />
             <e p="Shapes" t="Include">
               <e p="Shape.cs" t="Include" />
+              <e p="Sphere.cs" t="Include" />
             </e>
           </e>
           <e p="Shader" t="Include">
             <e p="Shader.cs" t="Include" />
           </e>
           <e p="VBO.cs" t="Include" />
-          <e p="Window.cs" t="Include" />
         </e>
         <e p="GLPT.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">

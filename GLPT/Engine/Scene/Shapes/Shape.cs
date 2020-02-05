@@ -1,7 +1,6 @@
 ﻿namespace GLPT
 {
-    public interface Shape
+    public interface IShape
     {
-        
     }
 }
