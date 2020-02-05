@@ -50,14 +50,14 @@ namespace GLPT
         {
             var look = Vector3.Zero;
 
-            if (IsKeyDown(Key.Up))
+            if (IsKeyDown(Key.Keypad8))
                 look += new Vector3(0f, 0f, -1f);
-            if (IsKeyDown(Key.Down))
+            if (IsKeyDown(Key.Keypad5))
                 look += new Vector3(0f, 0f, 1f);
-            if (IsKeyDown(Key.Right))
-                look += new Vector3(0, 1f, 0);
-            if(IsKeyDown(Key.Left))
+            if (IsKeyDown(Key.Keypad4))
                 look += new Vector3(0, -1f, 0);
+            if(IsKeyDown(Key.Keypad6))
+                look += new Vector3(0, 1f, 0);
             return look;
         }
 

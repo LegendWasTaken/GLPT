@@ -10,7 +10,12 @@ uniform Sphere spheres[SPHERE_COUNT];
 uniform Plane planes[PLANE_COUNT];
 
 vec3 getSphereNormal(Sphere sphere, vec3 point){
-    return normalize(point - sphere.origin) + vec3(1);
+    point = (vec4(point, 1) * inverse(viewMatrix)).xyz;
+    vec3 sphereOrigin = (vec4(sphere.origin, 1) * inverse(viewMatrix)).xyz;
+    vec3 normal = normalize(point - sphereOrigin);
+    normal += vec3(1);
+    normal /= 2f;
+    return normal;
 }
 
 vec3 planeCheckerboard(vec3 point){
