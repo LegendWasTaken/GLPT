@@ -6,9 +6,9 @@ float intersectRaySphere(Ray ray, Sphere sphere){
     float c = dot(oc, oc) - sphere.radius * sphere.radius;
     float disc = b * b - 4 * a * c;
     if(disc < 0) return -1f;
-    float t0 = (-b - sqrt(disc)) / 4 * a * c;
+    float t0 = (-b + sqrt(disc)) / 4 * a * c;
     if(t0 > 0) return t0;
-    float t1 = (-b + sqrt(disc)) / 4 * a * c;
+    float t1 = (-b - sqrt(disc)) / 4 * a * c;
     if(t1 > 0) return t1;
     return -1f;
 }

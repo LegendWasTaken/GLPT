@@ -6,7 +6,7 @@ namespace GLPT
     public class Camera
     {
         private const float LOOK_SPEED = 1.1F;
-        private const float MOVE_SPEED = 2.3F;
+        private const float MOVE_SPEED = 3.3F;
 
         private Vector3 _translation = Vector3.Zero;
         

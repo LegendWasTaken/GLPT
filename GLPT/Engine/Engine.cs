@@ -72,7 +72,8 @@ namespace GLPT
         
         protected override void OnRenderFrame(FrameEventArgs e)
         {
-            _camera.Update((float)e.Time);
+            if(Focused)
+                _camera.Update((float)e.Time);
             
             _shader.SetUniform("viewMatrix", _camera.GetViewMatrix());
             

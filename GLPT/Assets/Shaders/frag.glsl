@@ -10,9 +10,9 @@ uniform Sphere spheres[SPHERE_COUNT];
 uniform Plane planes[PLANE_COUNT];
 
 vec3 getSphereNormal(Sphere sphere, vec3 point){
-    point = (vec4(point, 1) * inverse(viewMatrix)).xyz;
-    vec3 sphereOrigin = (vec4(sphere.origin, 1) * inverse(viewMatrix)).xyz;
-    vec3 normal = normalize(point - sphereOrigin);
+    //point = (vec4(point, 1) * inverse(viewMatrix)).xyz;
+    //vec3 sphereOrigin = (vec4(sphere.origin, 1) * inverse(viewMatrix)).xyz;
+    vec3 normal = normalize(point - sphere.origin);
     normal += vec3(1);
     normal /= 2f;
     return normal;
